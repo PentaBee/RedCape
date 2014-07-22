@@ -1,0 +1,213 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -3.301
+TNS   : -506.743
+
+Type  : Slow 1100mV 85C Model Setup 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.779
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.594
+TNS   : -2.594
+
+Type  : Slow 1100mV 85C Model Hold 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.579
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -5.551
+TNS   : -1196.357
+
+Type  : Slow 1100mV 85C Model Recovery 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -3.952
+TNS   : -3.952
+
+Type  : Slow 1100mV 85C Model Removal 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -1.339
+TNS   : -2.672
+
+Type  : Slow 1100mV 85C Model Removal 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.399
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'omap_gpmc_clk'
+Slack : -0.687
+TNS   : -1.225
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -0.538
+TNS   : -197.616
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.833
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.487
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'omap_bus_clk'
+Slack : 19.731
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -3.338
+TNS   : -495.432
+
+Type  : Slow 1100mV 0C Model Setup 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.743
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.509
+TNS   : -2.509
+
+Type  : Slow 1100mV 0C Model Hold 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.551
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -5.515
+TNS   : -1188.268
+
+Type  : Slow 1100mV 0C Model Recovery 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -3.643
+TNS   : -3.643
+
+Type  : Slow 1100mV 0C Model Removal 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -1.462
+TNS   : -2.916
+
+Type  : Slow 1100mV 0C Model Removal 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 1.209
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'omap_gpmc_clk'
+Slack : -0.730
+TNS   : -1.292
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -0.538
+TNS   : -193.673
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.833
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.420
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'omap_bus_clk'
+Slack : 19.741
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -1.156
+TNS   : -135.507
+
+Type  : Fast 1100mV 85C Model Setup 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -1.078
+TNS   : -1.078
+
+Type  : Fast 1100mV 85C Model Hold 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.266
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -2.260
+TNS   : -433.912
+
+Type  : Fast 1100mV 85C Model Recovery 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.031
+TNS   : -2.031
+
+Type  : Fast 1100mV 85C Model Removal 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -0.919
+TNS   : -1.837
+
+Type  : Fast 1100mV 85C Model Removal 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.634
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'omap_gpmc_clk'
+Slack : -0.738
+TNS   : -1.291
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.082
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.833
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.749
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'omap_bus_clk'
+Slack : 19.336
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -0.985
+TNS   : -104.811
+
+Type  : Fast 1100mV 0C Model Setup 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.162
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -1.006
+TNS   : -1.006
+
+Type  : Fast 1100mV 0C Model Hold 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.248
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -2.135
+TNS   : -404.078
+
+Type  : Fast 1100mV 0C Model Recovery 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : -1.845
+TNS   : -1.845
+
+Type  : Fast 1100mV 0C Model Removal 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : -0.986
+TNS   : -1.971
+
+Type  : Fast 1100mV 0C Model Removal 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.507
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'omap_gpmc_clk'
+Slack : -0.767
+TNS   : -1.407
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'host_syscon:iHOST_SYSCON|host_clk'
+Slack : 0.104
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.833
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'iHOST_SYSCON|iRAM_PLL|altpll_component|auto_generated|generic_pll2~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.744
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'omap_bus_clk'
+Slack : 19.286
+TNS   : 0.000
+
+------------------------------------------------------------

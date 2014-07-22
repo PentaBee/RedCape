@@ -1,0 +1,10 @@
+PLL_Name	host_syscon:iHOST_SYSCON|ram_pll:iRAM_PLL|altpll:altpll_component|altpll_8l82:auto_generated|generic_pll1~FRACTIONAL_PLL
+PLLJITTER	26
+PLLSPEmax	50
+PLLSPEmin	-50
+
+PLL_Name	host_syscon:iHOST_SYSCON|ram_pll:iRAM_PLL|altpll:altpll_component|altpll_8l82:auto_generated|generic_pll2~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+

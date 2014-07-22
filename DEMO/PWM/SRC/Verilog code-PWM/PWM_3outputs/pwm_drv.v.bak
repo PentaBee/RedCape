@@ -1,0 +1,157 @@
+//*******************************************************************************
+//
+//	File:		pwm_drv.v
+//	Author:		Octavio Rico
+//	Data:		24/09/2013
+//
+//	MODULE
+//
+//	This module generates a 50 Hz signal and the Pulse With Modulation is controled 
+//  adjusting 'pwm_time'. 'pwm_time' = 600000 is equal to 50% Duty cycle
+//	host_clk = 60 MHz
+//	
+//*******************************************************************************
+`include	"timescale.v"
+`include	"reg_defs.v"
+
+module pwm_drv (
+// host bus:
+				host_rst_l,
+				host_clk,
+				host_addr,
+				host_wr_data,
+				host_cs,
+				host_rd_en,
+				host_wr_en,
+				
+				pwm,
+				pwm2,
+				pwm3
+				
+			);
+
+// host bus:
+input			host_rst_l;
+input			host_clk;
+input	[15:0]	host_addr;
+input	[15:0]	host_wr_data;
+input			host_cs;
+input			host_rd_en;
+input			host_wr_en;
+
+output 			pwm;
+output 			pwm2;
+output 			pwm3;
+
+reg				pwm;
+reg	 [31:0]		counter;
+reg				pwm2;
+reg	 [31:0]		counter2;
+reg				pwm3;
+reg	 [31:0]		counter3;
+
+//	write register selects
+wire			pwm_up_wr_en;
+wire			pwm_low_wr_en;
+wire			pwm_roll_up_wr_en;
+wire			pwm_roll_low_wr_en;
+wire			pwm_pitch_up_wr_en;
+wire			pwm_pitch_low_wr_en;
+
+reg [31:0]		pwm_time;
+reg [31:0]		pwm_time_roll;
+reg [31:0]		pwm_time_pitch;
+//*******************************************************************************
+// register selects
+//*******************************************************************************
+assign pwm_low_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'd4);
+assign pwm_up_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'd6);
+assign pwm_roll_low_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'd8);
+assign pwm_roll_up_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'hA);
+assign pwm_pitch_low_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'hC);
+assign pwm_pitch_up_wr_en = host_wr_en & host_cs & (host_addr[3:0]==4'hE);
+
+//pwm
+always @(posedge host_clk or negedge host_rst_l)
+begin
+	if (~host_rst_l)
+	begin
+		pwm <= 1'b0;
+		counter <= 32'd0;
+	end
+	else
+	begin	
+	counter <= counter + 32'd1;
+		if (counter <= pwm_time)
+			pwm <= 1'b1;
+		else
+		pwm <= 1'b0;
+		if (counter >= 32'd1200000) //50 Hz
+		counter <= 32'd0;
+	end 
+end 
+
+//pwm roll
+always @(posedge host_clk or negedge host_rst_l)
+begin
+	if (~host_rst_l)
+	begin
+		pwm2 <= 1'b0;
+		counter2 <= 32'd0;
+	end
+	else
+	begin	
+	counter2 <= counter2 + 32'd1;
+		if (counter2 <= pwm_time_roll)
+			pwm2 <= 1'b1;
+		else
+		pwm2 <= 1'b0;
+		if (counter2 >= 32'd1200000) //50 Hz
+		counter2 <= 32'd0;
+	end 
+end 
+
+//pwm Pitch
+always @(posedge host_clk or negedge host_rst_l)
+begin
+	if (~host_rst_l)
+	begin
+		pwm3 <= 1'b0;
+		counter3 <= 32'd0;
+	end
+	else
+	begin	
+	counter3 <= counter3 + 32'd1;
+		if (counter3 <= pwm_time_pitch)
+			pwm3 <= 1'b1;
+		else
+		pwm3 <= 1'b0;
+		if (counter3 >= 32'd1200000) //50 Hz
+		counter3 <= 32'd0;
+	end 
+end 
+
+always @(posedge host_clk or negedge host_rst_l)
+begin
+	if (~host_rst_l)
+	begin
+		pwm_time[31:0] <= 32'd60000;
+		pwm_time_roll[31:0] <= 32'd60000;
+		pwm_time_pitch[31:0] <= 32'd60000;
+	end
+	else if (pwm_up_wr_en)
+	pwm_time[31:16] <= host_wr_data[15:0];
+	else if (pwm_low_wr_en)
+	pwm_time[15:0] <= host_wr_data[15:0];
+	else if (pwm_roll_up_wr_en)
+	pwm_time_roll[31:16] <= host_wr_data[15:0];
+	else if (pwm_roll_low_wr_en)
+	pwm_time_roll[15:0] <= host_wr_data[15:0];
+	else if (pwm_pitch_up_wr_en)
+	pwm_time_pitch[31:16] <= host_wr_data[15:0];
+	else if (pwm_pitch_low_wr_en)
+	pwm_time_pitch[15:0] <= host_wr_data[15:0];		
+	
+end
+
+endmodule 

@@ -1,0 +1,15 @@
+#!/bin/bash
+#This script is initializate  RedCapeA1
+cd /sys/class/gpio/
+##
+#This is for RedCape VA0
+#echo 7 > export
+#This is for RedCape VA1
+echo 48 > export
+cd gpio48
+echo "out" > direction
+echo 1 > value
+##Load RedCape device tree overlay
+echo BB-RedCape > /sys/devices/bone_capemgr.*/slots
+echo RedCape is initializated > /dev/kmsg
+

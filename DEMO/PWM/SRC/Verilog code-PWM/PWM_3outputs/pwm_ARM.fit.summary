@@ -1,0 +1,19 @@
+Fitter Status : Successful - Wed May 28 16:51:44 2014
+Quartus II 64-Bit Version : 13.1.4 Build 182 03/12/2014 SJ Full Version
+Revision Name : pwm_ARM
+Top-level Entity Name : pwm_ARM
+Family : Cyclone V
+Device : 5CGXFC3B6U19C7
+Timing Models : Final
+Logic utilization (in ALMs) : 147 / 13,460 ( 1 % )
+Total registers : 246
+Total pins : 28 / 222 ( 13 % )
+Total virtual pins : 0
+Total block memory bits : 0 / 1,382,400 ( 0 % )
+Total DSP Blocks : 0 / 57 ( 0 % )
+Total HSSI RX PCSs : 0 / 3 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 3 ( 0 % )
+Total HSSI TX PCSs : 0 / 3 ( 0 % )
+Total HSSI TX Channels : 0 / 3 ( 0 % )
+Total PLLs : 1 / 7 ( 14 % )
+Total DLLs : 0 / 3 ( 0 % )

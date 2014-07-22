@@ -1,0 +1,164 @@
+/*
+ * BB-RedCape-00A0.dts
+ * Made by Bart Garcia
+ *
+ * Started on March 4rth 2014
+ *  
+ */
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "ti,beaglebone", "ti,beaglebone-black";
+
+	/* identification */
+	part-number = "BB-RedCape";
+	version = "00A0";
+
+
+
+	/* state the resources this cape uses */
+	exclusive-use =
+		/* the pin header uses */
+                /*GPMC Data Lines */
+                "P8.25", 	/* GPMC: gpmc_ad0 */
+                "P8.24", 	/* GPMC: gpmc_ad1 */
+                "P8.5",		/* GPMC: gpmc_ad2 */
+                "P8.6", 	/* GPMC: gpmc_ad3 */
+                "P8.23", 	/* GPMC: gpmc_ad4 */
+                "P8.22", 	/* GPMC: gpmc_ad5 */
+                "P8.3", 	/* GPMC: gpmc_ad6 */
+                "P8.4", 	/* GPMC: gpmc_ad7 */
+                "P8.19", 	/* GPMC: gpmc_ad8 */
+                "P8.13", 	/* GPMC: gpmc_ad9 */
+                "P8.14", 	/* GPMC: gpmc_ad10 */
+                "P8.17", 	/* GPMC: gpmc_ad11 */
+                "P8.12", 	/* GPMC: gpmc_ad12 */
+                "P8.11", 	/* GPMC: gpmc_ad13 */
+                "P8.16", 	/* GPMC: gpmc_ad14 */
+                "P8.15", 	/* GPMC: gpmc_ad15*/
+		/* GPMC Address Lines */
+		"P8.45", 	/* GPMC: gpmc_a1*/
+		"P8.46", 	/* GPMC: gpmc_a2*/
+		"P8.43", 	/* GPMC: gpmc_a3*/
+		"P8.44", 	/* GPMC: gpmc_a4*/
+		/* GPMC Chip Selects*/
+		"P8.26", 	/* GPMC: gpmc_csn0 */
+                "P8.21", 	/* GPMC: gpmc_csn1 */
+                "P9.13", 	/* GPMC: gpmc_csn5 */
+
+
+		/* GPMC Control */
+		"P8.8", 	/* GPMC: gpmc_oen_ren */
+                "P8.7", 	/* GPMC: gpmc_advn_ale */          
+                "P8.10", 	/* GPMC: gpmc_wen */
+                "P8.18", 	/* GPMC: gpmc_clk */
+                "P8.9", 	/* GPMC: gpmc_be0n_cle */              
+                "P9.11", 	/* GPMC: gpmc_wait0 */
+
+
+
+
+                /* the hardware IP uses */
+                "gpmc";
+
+/* Set up pin multiplex */
+fragment@0 {
+	target = <&am33xx_pinmux>;
+	__overlay__ {
+		mynet_cape_00a0_pins: pinmux_mynet_cape_00a0_pins {
+
+		pinctrl-single,pins = <
+
+               
+                /* address/data muxed bus */
+               0x000 0x30 /* gpmc_ad0, INPUT_PULLUP 	| MODE0 */
+               0x004 0x30 /* gpmc_ad1, INPUT_PULLUP 	| MODE0 */
+               0x008 0x30 /* gpmc_ad2, INPUT_PULLUP 	| MODE0 */
+               0x00c 0x30 /* gpmc_ad3, INPUT_PULLUP 	| MODE0 */
+               0x010 0x30 /* gpmc_ad4, INPUT_PULLUP 	| MODE0 */
+               0x014 0x30 /* gpmc_ad5, INPUT_PULLUP 	| MODE0 */
+               0x018 0x30 /* gpmc_ad6, INPUT_PULLUP 	| MODE0 */
+               0x01c 0x30 /* gpmc_ad7, INPUT_PULLUP 	| MODE0 */
+               0x020 0x30 /* gpmc_ad8, INPUT_PULLUP 	| MODE0 */
+               0x024 0x30 /* gpmc_ad9, INPUT_PULLUP 	| MODE0 */
+               0x028 0x30 /* gpmc_ad10, INPUT_PULLUP 	| MODE0 */
+               0x02c 0x30 /* gpmc_ad11, INPUT_PULLUP 	| MODE0 */
+               0x030 0x30 /* gpmc_ad12, INPUT_PULLUP 	| MODE0 */
+               0x034 0x30 /* gpmc_ad13, INPUT_PULLUP 	| MODE0 */
+               0x038 0x30 /* gpmc_ad14, INPUT_PULLUP 	| MODE0 */
+               0x03c 0x30 /* gpmc_ad15, INPUT_PULLUP 	| MODE0 */
+		/* GPMC Address Lines */
+	       0x0a0 0x31 /*gpmc_a1,INPUT_PULLUP 	| MODE1 */
+	       0x0a4 0x31 /*gpmc_a2,INPUT_PULLUP 	| MODE1 */
+	       0x0a8 0x31 /*gpmc_a3,INPUT_PULLUP 	| MODE1 */
+	       0x0ac 0x31 /*gpmc_a4,INPUT_PULLUP 	| MODE1 */
+		
+		/* chipselects */
+               0x07C 0x18 /* gpmc_csn0, OUTPUT_PULL_DISA 	| MODE0 */
+               0x080 0x18 /* gpmc_csn1, OUTPUT_PULL_DISA	| MODE0 */
+               0x074 0x1a /* gpmc_csn5, OUTPUT_PULL_DISA        | MODE2 */
+
+
+
+               
+               /* control */
+               0x094 0x18 /* gpmc_oen_ren, 	OUTPUT_PULL_DIS | MODE0 */
+               0x090 0x18 /* gpmc_advn_ale, 	OUTPUT_PULL_DIS | MODE0 */
+               0x098 0x18 /* gpmc_wen, 		OUTPUT_PULL_DIS | MODE0 */
+               0x08C 0x30 /* gpmc_clk, 		INPUT_PULLUP 	| MODE0 */
+               0x09c 0x18 /* gpmc_be0n_cle, 	OUTPUT_PULL_DIS	| MODE0 */
+	       0x070 0x30 /* gpmc_wait0  	INPUT_PULLUP	| MODE0 */
+	
+	
+		
+
+
+
+
+
+
+
+		>;
+			};
+		};
+	};
+
+
+/* Set up the GPMC interface */
+fragment@1 {
+		target = <&gpmc>;
+		depth = <1>; /* only create devices on depth 1 */	
+
+
+               	/* stupid warnings */
+               	#address-cells = <1>;
+               	#size-cells = <1>;
+
+		__overlay__ {
+			status = "okay";
+
+			/* stupid warnings */
+			#address-cells = <2>;
+			#size-cells = <1>;
+
+
+			//compatible = "Pb,bone-RedCape"; /* THIS LINE Makes the overlay to stop working */
+			pinctrl-names = "default";
+			pinctrl-0 = <&mynet_cape_00a0_pins>;
+
+			/* chip select ranges */
+			ranges = <0 0 0x08000000 0x10000000>,	/* bootloader has this enabled*/ 
+				 <1 0 0x18000000 0x08000000>,
+				 <2 0 0x20000000 0x08000000>,
+				 <3 0 0x28000000 0x08000000>,
+				 <4 0 0x30000000 0x08000000>,
+				 <5 0 0x38000000 0x04000000>,
+				 <6 0 0x3c000000 0x04000000>;
+			
+
+
+
+};
+};
+};

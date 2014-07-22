@@ -1,0 +1,97 @@
+//*******************************************************************************
+//
+//	File:		host_control.v
+//	Author:		Kevin Moon
+//	Data:		
+//
+//	DMIST CONTROL/STATUS MODULE
+//
+//	This module is the fpga global control and status module
+//
+//*******************************************************************************
+
+`include	"timescale.v"
+`include	"reg_defs.v"
+`include	"host_ctrl_defs.v"
+
+module host_ctrl (
+//	host bus port:
+				host_rst_l,
+				host_clk,
+				host_addr,
+				host_rd_data,
+				host_wr_data,
+				host_cs,
+				host_rd_en,
+				host_wr_en
+		);
+
+//	host bus port:
+input			host_rst_l;
+input			host_clk;
+input	[15:0]	host_addr;
+output	[15:0]	host_rd_data;
+input	[15:0]	host_wr_data;
+input			host_cs;
+input			host_rd_en;
+input			host_wr_en;
+
+// register select
+wire			ctrl_wr_en;
+wire			stat_rd_en;
+wire			id_rd_en;
+
+// registers:
+reg		[15:0]	ctrl_reg;
+reg		[15:0]	stat_reg;
+wire	[15:0]	id_reg;
+
+// read data mux
+reg		[15:0]	host_rd_data;
+
+// address decode
+
+assign ctrl_wr_en = host_wr_en & host_cs & (host_addr[3:0] == `HOST_CTRL_REG_CTRL);
+assign stat_rd_en = host_rd_en & host_cs & (host_addr[3:0] == `HOST_CTRL_REG_STAT);
+assign id_rd_en = host_rd_en & host_cs & (host_addr[3:0] == `HOST_CTRL_REG_ID);
+
+assign test1 = id_rd_en;
+// control register
+
+always @(posedge host_clk or negedge host_rst_l)
+	if (~host_rst_l)
+		ctrl_reg <= 16'd3505;
+	else if (ctrl_wr_en)
+		ctrl_reg <= host_wr_data;
+
+// status register
+
+always @(posedge host_clk or negedge host_rst_l)
+	if (~host_rst_l)
+		stat_reg <= 0;
+	else
+		stat_reg <= ctrl_reg;
+	
+// id register
+
+assign id_reg = `FPGA_ID_CODE;
+
+// read data mux
+
+always @ (
+	 stat_rd_en or stat_reg or
+	 id_rd_en or id_reg
+)
+begin
+	if (stat_rd_en)
+		host_rd_data = stat_reg;
+	else if (id_rd_en)
+	begin
+		host_rd_data = id_reg;
+		end		
+	else
+		host_rd_data = 0;
+end
+
+endmodule
+

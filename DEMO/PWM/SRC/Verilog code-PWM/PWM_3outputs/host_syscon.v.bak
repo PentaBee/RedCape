@@ -1,0 +1,73 @@
+//*******************************************************************************
+//
+//	File:		host_syscon.v
+//	Author:		Kevin Moon
+//	Date:		21/8/02
+//
+//	HOST RESET/CLOCK LOGIC MODULE
+//
+//	This module contains the clock generation and reset control
+//	Generate host clock and ram clocks from sys_clk
+//	generates video clock from link_clk
+//	generates reset signals synched to each clock
+//
+//	It's been modified for PWM example
+//
+//*******************************************************************************
+
+`include	"timescale.v"
+
+module host_syscon (
+// sys clock in:
+				sys_clk,
+				sys_rst_l,
+
+// host bus clock out:
+				host_clk,
+				host_rst_l
+		);
+
+// sys clock in:
+input			sys_clk;
+input			sys_rst_l;
+
+// host bus clock out:
+output			host_clk;
+output			host_rst_l;
+
+wire 	ram_clk;
+
+// reset shift reg
+reg			host_clk;
+reg	[1:0]	host_rst_sr;
+
+// instantiate pll
+
+ram_pll iRAM_PLL(
+				.inclk0(sys_clk), //25 MHz  
+				.c1(ram_clk)    //120 MHz    
+		);
+
+// sync sys_rst_l to host_clk
+// shift reg cleared by sys_rst_l
+// 1 clocked in by host_clk
+
+always @(posedge ram_clk or negedge sys_rst_l)
+begin
+	if (~sys_rst_l)
+	host_clk<=0;
+	else
+	host_clk<=~host_clk;
+end
+
+always @(posedge host_clk or negedge sys_rst_l)
+begin
+	if (~sys_rst_l)
+		host_rst_sr <= 0;
+	else
+		host_rst_sr <= {1'b1, host_rst_sr[1]};
+end
+
+assign host_rst_l = host_rst_sr[0];
+
+endmodule 

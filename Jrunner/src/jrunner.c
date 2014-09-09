@@ -365,8 +365,9 @@ int ReadCDF(int file_id)
 		if (mark==1)
 		{
 			mark =2;
-
-			if(GetData("ACTIONCODE",buffer,data))
+			/*    To fix the errors with CAPS  */
+			//if(GetData("ACTIONCODE",buffer,data))
+			if(GetData("ActionCode",buffer,data))
 			{
 				if(!CheckActionCode(data))
 					return 0;
@@ -404,7 +405,9 @@ int ReadCDF(int file_id)
 
 			mark++;
 			
-			if(GetData("ACTIONCODE",buffer,data))
+			/*    To fix the errors with CAPS  */
+			//if(GetData("ACTIONCODE",buffer,data))
+			if(GetData("ActionCode",buffer,data))
 			{
 				if(!CheckActionCode(data))
 					return 0;
@@ -455,9 +458,10 @@ int GetData(char* charset,char* buffer,char* data)
 	char* data_pointer;
 	int   mark=0;
 
-	jb_toupper(charset);
-	jb_toupper(buffer);
-	
+
+	//jb_toupper(charset);
+	//jb_toupper(buffer);
+
 	/* looking for charset in buffer */
 	char_count= jb_str_cmp(charset,buffer);
 
@@ -502,8 +506,12 @@ int GetData(char* charset,char* buffer,char* data)
 
 		buff_pointer++;
 	}
+	/*  To eliminate passing the name of the file to CAPS  */
+	fprintf(stdout,"Value of data before: %s \n" ,data );
 
-	jb_toupper(data);
+
+	//	jb_toupper(data);
+
 
 	return char_count;
 }
@@ -523,9 +531,14 @@ int GetData(char* charset,char* buffer,char* data)
 /******************************************************************/
 int CheckActionCode(char* data)
 {
-	if(!jb_strcmp(data,"IGN"))
+	/*  To fix errors with CAPS */
+	//if(!jb_strcmp(data,"IGN"))
+	if(!jb_strcmp(data,"Ign"))
 		device_list[device_count].action= 'B';
-	else if(!jb_strcmp(data,"CFG"))
+	/*  To fix errors with CAPS */
+	//else if(!jb_strcmp(data,"CFG"))
+	else if(!jb_strcmp(data,"Cfg"))
+
 		device_list[device_count].action= 'P';
 	else
 	{
@@ -554,7 +567,9 @@ int CheckActionCode(char* data)
 /******************************************************************/
 void SearchKeyword(char* buffer,char* data)
 {
-	char  Info_name[4][20] = { "PARTNAME","PATH","FILE","INSTRUCTIONREG" };
+	/*  TO ELIMINATE THE ERRORS WITH CAPS  */
+	//char  Info_name[4][20] = { "PARTNAME","PATH","FILE","INSTRUCTIONREG" };
+	char  Info_name[4][20] = { "PartName","Path","FILE","INSTRUCTIONREG" };
 	int   i;
 
 	for(i=0;i<4;i++)
@@ -568,6 +583,9 @@ void SearchKeyword(char* buffer,char* data)
 				CheckAltDev(device_count);
 				break;
 			case 1:
+				/******************To eliminate the necessity to use CAPS for the name of the rbf file*/
+
+
 				jb_strcpy(device_list[device_count-1].path,data);
 				break;
 			case 2:

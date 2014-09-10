@@ -507,9 +507,6 @@ int GetData(char* charset,char* buffer,char* data)
 		buff_pointer++;
 	}
 	/*  To eliminate passing the name of the file to CAPS  */
-	fprintf(stdout,"Value of data before: %s \n" ,data );
-
-
 	//	jb_toupper(data);
 
 

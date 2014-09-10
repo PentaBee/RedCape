@@ -1,7 +1,7 @@
 #!/bin/bash
-#This script is for Automaticly turning ON  RedCapeA2 and loading Device Tree
+#This script is for Automaticly turning ON  RedCapeA1 and loading Device Tree
 #Adding Init to Cron
-(crontab -l 2>/dev/null; echo "@reboot /bin/bash /home/root/InitRCA2.sh") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot /bin/bash /home/root/InitRCA1.sh") | crontab -
 ##Compiling the device tree overlay object
 cd /home/root/DeviceTree
 dtc -O dtb -o BB-RedCape-00A0.dtbo -b 0 -@ BB-RedCape-00A0.dts

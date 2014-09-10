@@ -1,5 +1,5 @@
 #!/bin/bash
-#This script is initializate  RedCapeA2
+#This script is initializate  RedCapeA1
 cd /sys/class/gpio/
 ##
 #This is for RedCape VA0

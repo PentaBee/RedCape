@@ -3,6 +3,6 @@
 cd FPGA/Jrunner/
 ##
 chmod +x jrunner
-./jrunner redcape2_test.cdf
+./jrunner redcapea2_demo.cdf
 cd ~
 echo Flashing LEDs DEMO - Use the PushButtons to control the DEMO
